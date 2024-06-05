@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    [SerializeField] private Transform player; 
+    [SerializeField] private GameObject player; 
     
 
     public bool knock_back; 
@@ -25,24 +25,24 @@ public class movement : MonoBehaviour
     void Update()
     {
         
-
-         
     }
 
     void OnCollisionEnter2D(Collision2D enemy_col)
     {
-        UnityEngine.Vector2 enemy_knockback = new UnityEngine.Vector2(transform.position.x +20,transform.position.y); 
+        UnityEngine.Vector2 enemy_knockback = new UnityEngine.Vector2(transform.position.x +120,transform.position.y); 
+        var player_rb = player.GetComponent<Rigidbody2D>();
         var rb = gameObject.GetComponent<Rigidbody2D>();
          if(enemy_col.gameObject.name == "Player")
          {
             knock_back= true;
             
-            if(transform.position.x > player.position.x)
-                {    
-                
+            if(transform.position.x > player.transform.position.x)
+                {   
+                   // print("movePlayer");
                 rb.AddForce(enemy_knockback,ForceMode2D.Impulse);
                 }
             else{
+                //print("movePlayer");
                 rb.AddForce(-enemy_knockback,ForceMode2D.Impulse);
                 
             }

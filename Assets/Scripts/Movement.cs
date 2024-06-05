@@ -11,6 +11,7 @@ using UnityEngine.AI;
 public class Movement : MonoBehaviour
 {
     UnityEngine.Vector2 movement;
+    private bool knock_back; 
     
 
     // Start is called before the first frame update
@@ -30,18 +31,22 @@ public class Movement : MonoBehaviour
         move();
         animate();
         
+        
     }
 
     void move_character()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new UnityEngine.Vector2(movement.x*3f  ,movement.y*3f );
+        if (!knock_back)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = new UnityEngine.Vector2(movement.x*3f  ,movement.y*3f );
+        }
     }
     void move()
     {
-        float x_move = Input.GetAxisRaw("Horizontal");
-        float y_move = Input.GetAxisRaw("Vertical");
-        movement = new UnityEngine.Vector2(x_move,y_move).normalized;
+            float x_move = Input.GetAxisRaw("Horizontal");
+            float y_move = Input.GetAxisRaw("Vertical");
+            movement = new UnityEngine.Vector2(x_move,y_move).normalized;
     }
     void animate()
     {
@@ -128,6 +133,16 @@ public class Movement : MonoBehaviour
                 }
             }
         
-
+        
     }
+    void OnCollisionEnter2D(Collision2D enemy_col)
+            {
+                if (enemy_col.gameObject.name == "Warrior_Yellow_0")
+            {
+            knock_back = true; 
+            print("collisioin");
+            var rb = gameObject.GetComponent<Rigidbody2D>();
+            rb.AddForce(new UnityEngine.Vector2(2f,0f),ForceMode2D.Impulse);
+            }
+            }
 }

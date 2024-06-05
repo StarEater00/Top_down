@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 206322294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.39, y: 3.68, z: 0}
+  m_LocalPosition: {x: -2.57, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -240,12 +240,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206322294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c05b31f376391895926687cecca40dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1351174834}
+  player: {fileID: 1351174829}
   knock_back: 0
 --- !u!58 &206322299
 CircleCollider2D:
@@ -3732,6 +3732,7 @@ GameObject:
   - component: {fileID: 1351174830}
   - component: {fileID: 1351174835}
   - component: {fileID: 1351174836}
+  - component: {fileID: 1351174837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3773,7 +3774,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -3783,7 +3784,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -3960,6 +3961,18 @@ PolygonCollider2D:
       - {x: 0.2230908, y: -0.107968286}
       - {x: 0.13167611, y: -0.02974578}
   m_UseDelaunayMesh: 0
+--- !u!114 &1351174837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351174829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6765ad02ddb3b8e7db3a9a6421709868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1788435278
 GameObject:
   m_ObjectHideFlags: 0

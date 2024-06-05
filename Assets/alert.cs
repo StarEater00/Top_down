@@ -49,7 +49,7 @@ public class alert : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col_enemy)
     {
-        print("enemy_col");
+        //print("enemy_col");
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -87,7 +87,7 @@ public class alert : MonoBehaviour
     }
     void Follow_player()
     {
-        if(in_zone && !Movement.knock_back )
+        if(in_zone && !Movement.knock_back)
         {
             if (enemy.position.x < player.position.x)
             {
