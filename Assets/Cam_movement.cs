@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,8 +18,10 @@ public class Cam_movement : MonoBehaviour
 
     void FixedUpdate()
     {
-         var Cam = gameObject.GetComponent<Camera>();
-        Cam.transform.position = new UnityEngine.Vector3(player_trans.position.x,player_trans.position.y,-1f);
+        var x_move = Input.GetAxisRaw("Horizontal")*.02f;
+        var y_move = Input.GetAxisRaw("Vertical")*.02f;
+        var Cam = gameObject.GetComponent<Camera>();
+        Cam.transform.position = new UnityEngine.Vector3(Cam.transform.position.x +x_move, Cam.transform.position.y + y_move,-.5f);
 
     }
 
