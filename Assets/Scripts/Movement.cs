@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Unity.Collections;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class Movement : MonoBehaviour
 {
     UnityEngine.Vector2 movement;
     private bool knock_back; 
+    private bool left_contact;
+    [SerializeField] private float targetTime; 
+    private bool timer;
     
 
     // Start is called before the first frame update
@@ -30,6 +34,11 @@ public class Movement : MonoBehaviour
     {
         move();
         animate();
+        print(targetTime);
+        if (timer)
+        {
+            start_timer();
+        }
         
         
     }
@@ -138,11 +147,30 @@ public class Movement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D enemy_col)
             {
                 if (enemy_col.gameObject.name == "Warrior_Yellow_0")
-            {
-            knock_back = true; 
-            print("collisioin");
-            var rb = gameObject.GetComponent<Rigidbody2D>();
-            rb.AddForce(new UnityEngine.Vector2(2f,0f),ForceMode2D.Impulse);
+                {   
+                    knock_back = true; 
+                    print("collisioin");
+                    var rb = gameObject.GetComponent<Rigidbody2D>();
+                    rb.AddForce(new UnityEngine.Vector2(7f,0f),ForceMode2D.Impulse);
+                }
+                
+            
             }
+    void OnCollisionExit2D(Collision2D enemy_col)
+    {
+        timer = true;
+
+    }
+
+    void start_timer()
+    {
+        targetTime -= Time.deltaTime;
+            if (targetTime <= 0)
+                {
+                    knock_back = false;
+                    targetTime = .8f;
+                    timer = false;
             }
+    }
+
 }
