@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
@@ -13,14 +14,22 @@ public class alert : MonoBehaviour
     [SerializeField] private Rigidbody2D rb_enemy;
     [SerializeField] private Transform enemy; 
     [SerializeField] private Transform player; 
-    [SerializeField] private movement Movement; 
+    [SerializeField] private enemy_movement enemy_movement; 
+    // Collider2D enemy_collider;
+    //private bool knock_back;
     private bool in_zone;
     private Vector2 calc_knockback_pos;
+
     
     // Start is called before the first frame update
+    // void Awake()
+    // {
+    //     Collider2D enemy_collider = gameObject.GetComponentInParent<Collider2D>();
+    // }
+    
     void Start()
     {
-    
+        
 
         
     }
@@ -38,25 +47,24 @@ public class alert : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
              
-        if (col.gameObject.name == "Player")    
+        if (col.gameObject.name == "Head_Collider")    
             {
                 in_zone=true;
-            
             }
 
-
     }
 
-    void OnCollisionEnter2D(Collision2D col_enemy)
-    {
-        //print("enemy_col");
-    }
+    // void check_parent_contact()
+    // {
+    //     if (enemy_collider. )
+    // }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.gameObject.name == "Head_Collider")
         {
             in_zone = false;
+            //knock_back = false;
             
         }
 
@@ -78,22 +86,16 @@ public class alert : MonoBehaviour
         }
     }
 
-    void repel_player()
-    {
-        var calc_knockback_pos = (enemy.position.x+20,enemy.position.y+30);
-
-
-        
-    }
     void Follow_player()
     {
-        if(in_zone && !Movement.knock_back)
-        {
+        if(in_zone && !enemy_movement.player_contact)
+        {   //print("follow_player");
             if (enemy.position.x < player.position.x)
             {
                 //print(player.position.x - enemy.position.x);
-                if (player.position.x - enemy.position.x < 2f )
+                if (player.position.x - enemy.position.x < 4f )
                 {
+
                     enemy.position = Vector2.MoveTowards(enemy.position,player.position,.1f);
                     
                 }
@@ -102,7 +104,7 @@ public class alert : MonoBehaviour
             if (enemy.position.x > player.position.x)
             {
                 //print(player.position.x - enemy.position.x);
-                if (enemy.position.x - player.position.x < 2f )
+                if (enemy.position.x - player.position.x < 4f )
                 {
                     enemy.position = Vector2.MoveTowards(enemy.position,player.position,.1f);
                 }

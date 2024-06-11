@@ -12,10 +12,13 @@ using UnityEngine.AI;
 public class Movement : MonoBehaviour
 {
     UnityEngine.Vector2 movement;
-    private bool knock_back; 
-    private bool left_contact;
+    public bool knock_back; 
+    //private bool left_contact;
     [SerializeField] private float targetTime; 
-    private bool timer;
+    //[SerializeField] private knock_back Head_Collider;
+    //[SerializeField] private knock_back Body_Collider;
+
+    public bool timer;
     
 
     // Start is called before the first frame update
@@ -34,7 +37,7 @@ public class Movement : MonoBehaviour
     {
         move();
         animate();
-        print(targetTime);
+        //print(targetTime);
         if (timer)
         {
             start_timer();
@@ -48,7 +51,7 @@ public class Movement : MonoBehaviour
         if (!knock_back)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.velocity = new UnityEngine.Vector2(movement.x*3f  ,movement.y*3f );
+            rb.velocity = new UnityEngine.Vector2(movement.x*3f,movement.y*3f  );
         }
     }
     void move()
@@ -144,23 +147,44 @@ public class Movement : MonoBehaviour
         
         
     }
-    void OnCollisionEnter2D(Collision2D enemy_col)
-            {
-                if (enemy_col.gameObject.name == "Warrior_Yellow_0")
-                {   
-                    knock_back = true; 
-                    print("collisioin");
-                    var rb = gameObject.GetComponent<Rigidbody2D>();
-                    rb.AddForce(new UnityEngine.Vector2(7f,0f),ForceMode2D.Impulse);
-                }
-                
-            
-            }
-    void OnCollisionExit2D(Collision2D enemy_col)
-    {
-        timer = true;
 
-    }
+    //public void RegisterCollision(knock_back child,Collision2D col_data){print("Collision");}
+        // if(child == Head_Collider){
+        //     print("Collision");}}
+    //         void OnCollisionEnter2D(Collision2D col_data)
+    //         {
+    //             if (col_data.gameObject.name == "Warrior_Yellow_0")
+                
+    //             {   
+    //                 knock_back = true; 
+    //                 print("collisioin");
+    //                 var rb = gameObject.GetComponent<Rigidbody2D>();
+    //                 rb.AddForce(new UnityEngine.Vector2(7f,0f),ForceMode2D.Impulse);
+    //             }
+
+
+    //         }
+    //     }
+    // }
+    //     void OnCollisionEnter2D(Collision2D col_data)
+    //         {
+    //             if (col_data.gameObject.name == "Warrior_Yellow_0")
+                
+    //             {   
+    //                 knock_back = true; 
+    //                 print("collisioin");
+    //                 var rb = gameObject.GetComponent<Rigidbody2D>();
+    //                 rb.AddForce(new UnityEngine.Vector2(7f,0f),ForceMode2D.Impulse);
+    //             }
+                
+    //         }
+    // void OnCollisionExit2D(Collision2D enemy_col)
+    // {
+    //     timer = true;
+
+    // }
+        //print(head_col);
+
 
     void start_timer()
     {
@@ -168,8 +192,9 @@ public class Movement : MonoBehaviour
             if (targetTime <= 0)
                 {
                     knock_back = false;
-                    targetTime = .8f;
+                    targetTime = .5f;
                     timer = false;
+                    
             }
     }
 
