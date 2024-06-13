@@ -25,7 +25,7 @@ public class enemy_movement : MonoBehaviour
         enemy_collider = gameObject.GetComponent<Collider2D>();
         enemy_rb = gameObject.GetComponent<Rigidbody2D>();
         player_collider = Head_collider.gameObject.GetComponent<Collider2D>();
-        print(enemy_collider);
+        //print(enemy_collider);
     }
 
 

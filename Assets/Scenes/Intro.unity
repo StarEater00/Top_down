@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 206322295}
   - component: {fileID: 206322297}
   - component: {fileID: 206322298}
-  - component: {fileID: 206322299}
   - component: {fileID: 206322300}
+  - component: {fileID: 206322301}
   m_Layer: 0
   m_Name: Warrior_Yellow_0
   m_TagString: Untagged
@@ -210,6 +210,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 464847250}
+  - {fileID: 1497478549}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &206322297
@@ -247,8 +248,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Head_collider: {fileID: 1313014748}
   player_contact: 0
---- !u!58 &206322299
-CircleCollider2D:
+--- !u!50 &206322300
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206322294}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!60 &206322301
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -279,36 +307,38 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07364273}
-  serializedVersion: 2
-  m_Radius: 0.3440156
---- !u!50 &206322300
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206322294}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 5
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.92, y: 1.92}
+    newSize: {x: 1.92, y: 1.92}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.19641301, y: 0.043616682}
+      - {x: 0.19417658, y: 0.088683486}
+      - {x: 0.18679029, y: 0.1415097}
+      - {x: 0.083856925, y: 0.2949727}
+      - {x: 0.0791805, y: 0.28097203}
+      - {x: -0.016807135, y: 0.2515145}
+      - {x: -0.023266003, y: 0.2504251}
+      - {x: -0.017185688, y: 0.24182522}
+      - {x: -0.10308555, y: 0.2628588}
+      - {x: -0.15973371, y: 0.23138316}
+      - {x: -0.20749304, y: 0.061360344}
+      - {x: -0.28720912, y: 0.11302432}
+      - {x: -0.08452663, y: -0.025095373}
+      - {x: -0.084275454, y: -0.22552037}
+      - {x: -0.014435558, y: -0.24059355}
+      - {x: 0.11535022, y: -0.19546989}
+      - {x: 0.1970672, y: -0.1048392}
+      - {x: 0.21599591, y: -0.021723814}
+      - {x: 0.20529625, y: -0.008449443}
+  m_UseDelaunayMesh: 0
 --- !u!1 &464847247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,6 +3846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 206322294}
+  sword: {fileID: 1497478548}
 --- !u!1 &1351174829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,6 +4109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 206322294}
+  sword: {fileID: 1497478548}
 --- !u!1 &1409889997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4167,6 +4199,91 @@ PolygonCollider2D:
       - {x: 0.5360667, y: -0.13876179}
       - {x: 0.8111212, y: -0.049932405}
       - {x: 0.997795, y: 0.043264367}
+  m_UseDelaunayMesh: 0
+--- !u!1 &1497478548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1497478549}
+  - component: {fileID: 1497478550}
+  m_Layer: 3
+  m_Name: Sword_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1497478549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497478548}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.21, y: -0.05, z: 0}
+  m_LocalScale: {x: 2.6767516, y: 0.9980803, z: 0.14676791}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 206322296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1497478550
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497478548}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.24353914, y: 0.06093231}
+      - {x: 0.22669011, y: 0.34307307}
+      - {x: 0.12813118, y: 0.6896683}
+      - {x: 0.03341635, y: 0.7437905}
+      - {x: 0.12867804, y: 0.27317643}
+      - {x: 0.14767821, y: 0.11513684}
+      - {x: 0.07397044, y: -0.22974259}
+      - {x: 0.20555688, y: -0.37336642}
   m_UseDelaunayMesh: 0
 --- !u!1 &1788435278
 GameObject:

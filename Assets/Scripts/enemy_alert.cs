@@ -19,21 +19,16 @@ public class alert : MonoBehaviour
     //private bool knock_back;
     private bool in_zone;
     private Vector2 calc_knockback_pos;
+    Animator animator;
 
     
     // Start is called before the first frame update
-    // void Awake()
-    // {
-    //     Collider2D enemy_collider = gameObject.GetComponentInParent<Collider2D>();
-    // }
-    
-    void Start()
+    void Awake()
     {
-        
+        animator = gameObject.GetComponentInParent<Animator>();    
 
-        
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -53,11 +48,6 @@ public class alert : MonoBehaviour
             }
 
     }
-
-    // void check_parent_contact()
-    // {
-    //     if (enemy_collider. )
-    // }
 
     void OnTriggerExit2D(Collider2D col)
     {
@@ -83,30 +73,57 @@ public class alert : MonoBehaviour
         if(enemy.transform.position.x > player.transform.position.x && in_zone)
         {
             enemy.localScale = new UnityEngine.Vector3(-1,enemy.localScale.y,0);
+            
         }
     }
+
+    void animate(string action)
+    {
+        animator.CrossFade(action,0f,0);   
+    
+    }
+    
 
     void Follow_player()
     {
         if(in_zone && !enemy_movement.player_contact)
-        {   //print("follow_player");
+        {   
+            
             if (enemy.position.x < player.position.x)
             {
-                //print(player.position.x - enemy.position.x);
-                if (player.position.x - enemy.position.x < 4f )
+                
+                if (player.position.x - enemy.position.x < 6f)
                 {
 
                     enemy.position = Vector2.MoveTowards(enemy.position,player.position,.1f);
+                    if (player.position.x -enemy.position.x < 2f)
+                        {
+                            print("circle_player");
+                            circle_player();
+                        }
+
                     
+                    if (player.position.x -enemy.position.x >3f)
+                        {
+                            animate("running");
+                            
+                        }
+                    
+
                 }
+                if (player.position.x - enemy.position.x < 3f)
+                    {
+                        animator.CrossFade("hitting",0f,0);
+                    }
             
             }
             if (enemy.position.x > player.position.x)
             {
-                //print(player.position.x - enemy.position.x);
+                
                 if (enemy.position.x - player.position.x < 4f )
                 {
                     enemy.position = Vector2.MoveTowards(enemy.position,player.position,.1f);
+                    animate("running");
                 }
             }   
         }
@@ -114,7 +131,13 @@ public class alert : MonoBehaviour
         else
         {
             rb_enemy.velocity = new Vector2(0f,0f);
+            animate("idle");
         }
+    }
+    void circle_player()
+    {
+
+        rb_enemy.velocity = new Vector2(UnityEngine.Random.Range(-5f,0f),UnityEngine.Random.Range(-5f,0f));
     }
 
 }
