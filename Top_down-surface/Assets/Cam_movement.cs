@@ -15,10 +15,10 @@ public class Cam_movement : MonoBehaviour
        
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
-         var Cam = gameObject.GetComponent<Camera>();
-        Cam.transform.position = new UnityEngine.Vector3(player_trans.position.x,player_trans.position.y,-1f);
+         var Tile_pos = gameObject.GetComponent<Transform>();
+        Tile_pos.transform.position = new UnityEngine.Vector3(player_trans.position.x *.5f,player_trans.position.y,-1f *.5f);
 
     }
 
